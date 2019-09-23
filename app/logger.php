@@ -6,7 +6,7 @@ if (!$calendar) {
     return;
 }
 
-$debugStatsFile = '../eventcal.stats.json';
+$debugStatsFile = 'logs/eventcal.stats.json';
 $fpStats = fopen($debugStatsFile, 'a+') ;
 if(!flock($fpStats, LOCK_EX)) {
     logError("Could not lock stats file");
@@ -77,7 +77,7 @@ function writeStats($calCount) {
 }
 
 function logError($errorStr) {
-    $errorsFilename = '../eventcal.errors.log';
+    $errorsFilename = 'logs/eventcal.errors.log';
     file_put_contents($errorsFilename, date("Y-m-d H:i:s") . ' ' . $errorStr . "\r\n", FILE_APPEND | LOCK_EX);
 }
 
